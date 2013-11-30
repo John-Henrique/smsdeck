@@ -1,0 +1,63 @@
+
+/*
+Personalizando o bloco das mensagens
+*/
+.mensagens_listadas p {
+	padding:20px 10px 10px 10px;
+}
+
+/* mensagens não utilizadas */
+.mensagens_lista .false {
+	border-left: green 3px solid;
+}
+
+/* mensagens já utilizadas */
+.mensagens_lista .true {
+	border-left: red 3px solid;
+}
+
+/* mensagens marcadas como favoritas */
+.mensagens_lista .favorita {
+	background-color: floralwhite;
+}
+
+/* mensagens de categoria privada (só pode usar na versão comercial) */
+/*.mensagens_lista .privada, não iremos mudar o estilo apenas impedir a copia/uso */
+.categoria_lista .privada {
+	background-color: mistyrose;
+}
+
+
+
+
+@media (min-width:0.867em) {
+ 
+  /* wrap on wide viewports once open */
+ 
+  .ui-page-panel-open .ui-panel-content-fixed-toolbar-display-push.ui-panel-content-fixed-toolbar-position-left,
+  .ui-page-panel-open .ui-panel-content-fixed-toolbar-display-reveal.ui-panel-content-fixed-toolbar-position-left,
+  .ui-page-panel-open .ui-panel-content-wrap-display-push.ui-panel-content-wrap-position-left,
+  .ui-page-panel-open .ui-panel-content-wrap-display-reveal.ui-panel-content-wrap-position-left {
+    margin-right: 25em;
+  }
+  .ui-page-panel-open .ui-panel-content-fixed-toolbar-display-push.ui-panel-content-fixed-toolbar-position-right,
+  .ui-page-panel-open .ui-panel-content-fixed-toolbar-display-reveal.ui-panel-content-fixed-toolbar-position-right,
+  .ui-page-panel-open .ui-panel-content-wrap-display-push.ui-panel-content-wrap-position-right,
+  .ui-page-panel-open .ui-panel-content-wrap-display-reveal.ui-panel-content-wrap-position-right {
+    margin-left: 25em;
+  }
+  .ui-page-panel-open .ui-panel-content-fixed-toolbar-display-push,
+  .ui-page-panel-open .ui-panel-content-fixed-toolbar-display-reveal {
+    width: auto;	
+  }
+ 
+  /* disable "dismiss" on wide viewports */
+  .ui-panel-dismiss {
+    display: none;
+  }
+  /* same as the above but for panels with display mode "push" only */
+  .ui-panel-dismiss-display-push {
+    display: none;
+  }
+ 
+}
