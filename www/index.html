@@ -12,9 +12,9 @@
 	<script src="js/jquery-1.8.2.min.js"></script>
 	<script src="js/smsdeck.js"></script>
 	<script src="js/jquery.mobile-1.3.0.min.js"></script>
-
+<!-- 
 	<script src="js/cordova.js"></script>
-	<script src="js/SocialSharing.js"></script>
+	<script src="js/SocialSharing.js"></script> -->
 	<script type="text/javascript" src="js/GALocalStorage.js"></script>
     <script>
     /*
@@ -60,20 +60,35 @@
 			<!-- links das categorias são carregados automaticamente -->
         </ul>
         
-        <li>Compartilhar</li>
-         <button onclick="window.plugins.socialsharing.share('Message only')">message only</button>
-         <a href="sms:212-111-4444">SMS me</a>
-         <a href="mailto:EMAIL@email.com">Email me</a>
-         <a href="twitter://messages">twitter</a>
-         <a href="fb://messaging">Facebook</a>
-         
+		<ul data-role="listview" data-theme="d" data-divider-theme="d" data-icon="false" data-global-nav="demos" class="jqm-list">
+			<li>Compartilhar</li>
+			<button onclick="window.plugins.socialsharing.share('Message only')">message only</button>
+			<a href="sms:?body=minha mensagem">SMS me</a>
+			<a href="mailto:?body=minha mensagem">Email me</a>
+			<a href="twitter://post?message=minha mensagem">twitter</a>
+			<a href="fb://messaging/compose?body=minha mensagem">Facebook</a>
+		</ul>
     
         
 	</div><!-- /panel -->
     
     
 
+	
+<div data-role="popup" id="popup_compartilhar" data-theme="none" data-transition="flip" style="margin:0; width:250px;">
+  <div data-role="content">
+	<ul data-role="listview" id="compartilhar">
+		<!-- conteudo adicionado dinamicamente -->
+	</ul>
+  </div>
+</div>
+
+	
+	
+	
+	
 </div><!-- /page -->
+
 
 
 <audio autoplay><source src="mp3/introducao.mp3" type="audio/mpeg"></audio>

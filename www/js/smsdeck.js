@@ -127,7 +127,7 @@ var sms = {
 				//dados.Cantadas.mensagens
 				console.log( "status categoria: "+ dados_encontrados.status );
 								
-				html += '<li id="mensagem_'+ index +'" class="mensagens_listadas '+ chave.status +' '+ sms.classe_item( dados_encontrados.status, 'privada' , 'livre' ) +'"><p>'+ chave.mensagem +'</p></li>';
+				html += '<li id="mensagem_'+ categoria_selecionada +'_'+ index +'" class="mensagens_listadas '+ chave.status +' '+ sms.classe_item( dados_encontrados.status, 'privada' , 'livre' ) +'"><p>'+ chave.mensagem +'</p></li>';
 			});
 			
 			
@@ -171,6 +171,39 @@ var sms = {
 		
 		// adiciona as novas mensagens
 		$( '.mensagens_lista' ).append( html );
+	},
+	
+	
+	/*
+	Quando o usuário clicar em uma mensagem iremos 
+	exibir um popup contendo as formas de 
+	compartilhamento disponívels
+	
+	@var mensagem string contendo a mensagem 
+	a ser compartilhada
+	*/
+	compartilhar: function( evento ){
+		
+		console.log( "compartilhar() ativado");
+		
+		mensagem = "minha mensagem SMS";
+		
+		// lista das redes sociais (ou métodos de compartilhamento) disponiveis
+		redes = {"sms":{"nome":"SMS","url":"sms:?body="},"twitter":{"nome":"Twitter","url":"twitter:\/\/messages?body="},"email":{"nome":"Email","url":"mailto:?body="},"twitter2":{"nome":"Twitter 2","url":"twitter:\/\/post?message="},"facebook":{"nome":"Facebook Messenger","url":"fb:\/\/messaging?body="}};
+		html = '<li data-role="divider" data-theme="e">Compartilhar com</li>';
+		
+		$.each( redes, function( index, chave ){
+			
+			html += '<li><a href="'+ chave.url + mensagem +'">'+ chave.nome +'</a></li>';
+			
+			console.log( "compartilhar com "+ chave.nome );
+		});
+		
+		console.log( evento );
+		
+		
+		$( '#compartilhar' ).append( html ).listview( 'refresh' ); // listview
+		$( '#popup_compartilhar' ).popup( "open" );//.remove()
 	},
 	
 	
@@ -225,6 +258,20 @@ $(function(){
 		
 		$( '#painel_categorias' ).panel( "close" );
 	});
+	
+	
+	// quando clicar (tap) e segurar uma mensagem
+	$( ".mensagens_listadas" ).live( "taphold", tapholdHandler );
+	
+	/* 
+	Handler para auxiliar na manipulação do evento
+	sem ele não dá pra aplicar a ação
+	*/
+	function tapholdHandler( event ){
+		sms.compartilhar( event.currentTarget.id );
+		console.log( "tapholdHandler ativado");
+	}
+	
 });
 
 
