@@ -15,7 +15,6 @@
 	
 	<gap:plugin name="com.adobe.plugins.gaplugin" />
 	<gap:plugin name="nl.x-services.plugins.socialsharing" />
-	<gap:plugin name="org.apache.cordova.vibration" />
 
 	
 	<feature name="http://api.phonegap.com/1.0/network"/>
