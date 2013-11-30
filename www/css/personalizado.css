@@ -29,10 +29,10 @@ Personalizando o bloco das mensagens
 
 
 
-
+/*
 @media (min-width:0.867em) {
  
-  /* wrap on wide viewports once open */
+  /* wrap on wide viewports once open * /
  
   .ui-page-panel-open .ui-panel-content-fixed-toolbar-display-push.ui-panel-content-fixed-toolbar-position-left,
   .ui-page-panel-open .ui-panel-content-fixed-toolbar-display-reveal.ui-panel-content-fixed-toolbar-position-left,
@@ -51,13 +51,14 @@ Personalizando o bloco das mensagens
     width: auto;	
   }
  
-  /* disable "dismiss" on wide viewports */
+  /* disable "dismiss" on wide viewports * /
   .ui-panel-dismiss {
     display: none;
   }
-  /* same as the above but for panels with display mode "push" only */
+  /* same as the above but for panels with display mode "push" only * /
   .ui-panel-dismiss-display-push {
     display: none;
   }
  
 }
+*/

@@ -68,7 +68,7 @@ var sms = {
 			
 			//console.log( "Categoria: "+ chave.status );
 			
-			html += '<li><a href="#'+ index +'" id="'+ index +'" class="'+ sms.classe_item( chave.status, 'privada' , 'livre' ) +'">'+ index +' '+ chave.status +'</a></li>';
+			html += '<li><a href="#'+ index +'" id="'+ index +'" class="'+ sms.classe_item( chave.status, 'privada' , 'livre' ) +'">'+ index +'</a></li>';
 		});
 		
 		$( '.categoria_lista' ).append( html );
@@ -127,7 +127,7 @@ var sms = {
 				//dados.Cantadas.mensagens
 				console.log( "status categoria: "+ dados_encontrados.status );
 								
-				html += '<li id="mensagem_'+ index +'" class="mensagens_listadas '+ chave.status +' '+ sms.classe_item( dados_encontrados.status, 'privada' , 'livre' ) +'"><p>'+ chave.mensagem +' '+ chave.status +'</p></li>';
+				html += '<li id="mensagem_'+ index +'" class="mensagens_listadas '+ chave.status +' '+ sms.classe_item( dados_encontrados.status, 'privada' , 'livre' ) +'"><p>'+ chave.mensagem +'</p></li>';
 			});
 			
 			
