@@ -96,6 +96,24 @@ var sms = {
 	}, 
 	
 	
+	/*
+	Força uma vibração no dispositivo
+	*/
+	beep: function(){
+		
+		// verificando se notification está disponivel
+		// não disponivel em navegadores
+		if( navigator.notification ){
+			navigator.notification.beep(3);
+			
+			console.log( "Beep() iniciado");
+		}else{
+			console.log( "Beep não disponível neste dispositivo" );
+		}
+		
+	},
+	
+	
 	
 	/*
 	Adiciona o conteúdo da categoria selecionada 
@@ -186,24 +204,30 @@ var sms = {
 		
 		console.log( "compartilhar() ativado");
 		
-		mensagem = "minha mensagem SMS";
+		// mensagem selecionada
+		mensagem = $( "#"+ evento ).text();
+		
 		
 		// lista das redes sociais (ou métodos de compartilhamento) disponiveis
-		redes = {"sms":{"nome":"SMS","url":"sms:?body="},"twitter":{"nome":"Twitter","url":"twitter:\/\/messages?body="},"email":{"nome":"Email","url":"mailto:?body="},"twitter2":{"nome":"Twitter 2","url":"twitter:\/\/post?message="},"facebook":{"nome":"Facebook Messenger","url":"fb:\/\/messaging?body="}};
-		html = '<li data-role="divider" data-theme="e">Compartilhar com</li>';
+		redes = {"sms":{"nome":"SMS","url":"sms:?body="},"twitter":{"nome":"Twitter","url":"twitter:\/\/messages?body="},"email":{"nome":"Email","url":"mailto:?body="},"facebook":{"nome":"Facebook Messenger","url":"fb:\/\/messaging?body="}};
 		
+		
+		html = '<li data-role="divider" class="redes_sociais">Compartilhar com</li>';
+		
+		// percorrendo o array das redes sociais
 		$.each( redes, function( index, chave ){
 			
-			html += '<li><a href="'+ chave.url + mensagem +'">'+ chave.nome +'</a></li>';
+			html += '<li class="redes_sociais"><a href="'+ chave.url + mensagem +'" class="redes_sociais_botao">'+ chave.nome +'</a></li>';
 			
-			console.log( "compartilhar com "+ chave.nome );
+			console.log( "compartilhar "+ mensagem +" com "+ chave.nome );
 		});
+		
 		
 		console.log( evento );
 		
-		
+		$( '.redes_sociais' ).remove();
 		$( '#compartilhar' ).append( html ).listview( 'refresh' ); // listview
-		$( '#popup_compartilhar' ).popup( "open" );//.remove()
+		$( '#popup_compartilhar' ).popup( "open" );//
 	},
 	
 	
@@ -247,14 +271,14 @@ $(function(){
 	sms.iniciar();
 	
 	
-	$( '.categoria_lista a' ).on( 'click', function(){
-		
+	$( '.categoria_lista a' ).live( 'click', function(){
 		
 		// seleciona as mensagens da categoria clicada
 		sms.get_mensagens( this.id, 'refresh' );
 		
 		// executar o vibrar
 		sms.vibrar();
+		sms.beep();
 		
 		$( '#painel_categorias' ).panel( "close" );
 	});
@@ -269,14 +293,30 @@ $(function(){
 	*/
 	function tapholdHandler( event ){
 		sms.compartilhar( event.currentTarget.id );
+		
+		sms.beep();
+		
 		console.log( "tapholdHandler ativado");
 	}
+	
+	
+	/*
+	Depois de clicar em uma opção de compartilhamento 
+	devemos fechar o menu de opções para permitir 
+	selecionar outra mensagem
+	*/
+	$( '.redes_sociais_botao' ).live( 'click', function(){
+		$( '#popup_compartilhar' ).popup( 'close' );
+	});
 	
 });
 
 
 
-
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady(){
+	// apenas para iterar o evento deviceready
+}
 
 // apenas para o momento em que a aplicação estiver pronta
 document.addEventListener("deviceReady", deviceReady, false);
