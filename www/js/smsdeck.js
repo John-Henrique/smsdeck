@@ -145,7 +145,7 @@ var sms = {
 				//dados.Cantadas.mensagens
 				console.log( "status categoria: "+ dados_encontrados.status );
 								
-				html += '<li id="mensagem_'+ categoria_selecionada +'_'+ index +'" class="mensagens_listadas '+ chave.status +' '+ sms.classe_item( dados_encontrados.status, 'privada' , 'livre' ) +'"><p>'+ chave.mensagem +'</p></li>';
+				html += '<li id="mensagem_'+ sms.formata_sem_espacos( categoria_selecionada ) +'_'+ index +'" class="mensagens_listadas '+ chave.status +' '+ sms.classe_item( dados_encontrados.status, 'privada' , 'livre' ) +'"><p>'+ chave.mensagem +'</p></li>';
 			});
 			
 			
@@ -244,6 +244,15 @@ var sms = {
 	},
 	
 	
+	/*
+	Remove espaços das palavras trocando-os por
+	underline, ideal para criar IDs de elementos 
+	*/
+	formata_sem_espacos: function( string ){
+		return string.replace( ' ', '_' );
+	},
+	
+	
 	// exibe / esconde o popup carregando
 	carregando: function( status ){
 		setTimeout(function(){
@@ -313,16 +322,15 @@ $(function(){
 
 
 
+// apenas para o momento em que a aplicação estiver pronta
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
 	// apenas para iterar o evento deviceready
+	//gaPlugin();
 }
 
-// apenas para o momento em que a aplicação estiver pronta
-document.addEventListener("deviceReady", deviceReady, false);
-
 var gaPlugin;
-function onDeviceReady() {
+function gaPlugin() {
     gaPlugin = window.plugins.gaPlugin;
     gaPlugin.init(successHandler, errorHandler, "UA-12345678-1", 10);
 }
