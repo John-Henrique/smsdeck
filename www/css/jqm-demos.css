@@ -72,13 +72,16 @@ body, .jqm-demos  {
 	border: none;
 	background: none;
 }
+/*
 .jqm-header > .ui-btn,
 .jqm-header > .ui-btn .ui-icon {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
 }
+*/
 /* Custom icons */
+/*
 .jqm-header > .ui-btn .ui-icon {
 	background-image: url(jqm_demo-icons-sd.png);
 	background-color: transparent;
@@ -86,12 +89,13 @@ body, .jqm-demos  {
 	height: 31px;
 	margin: 0;
 }
+
 .jqm-header .jqm-navmenu-link .ui-icon {
 	background-position: -3px 50%;
 }
 .jqm-header .jqm-search-link .ui-icon {
 	background-position: -100px -2px;
-}
+}*/
 /* Toggle search / close icon */
 .jqm-search-toggle .jqm-search-link .ui-icon {
 	background-position: -51px -2px;

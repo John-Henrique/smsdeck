@@ -30,13 +30,11 @@
 <div data-role="page" class="jqm-demos jqm-demos-index">
 
 	<div data-role="header" class="jqm-header">
+		<a href="#painel_categorias" class="jqm-navmenu-link" data-icon="bars" data-iconpos="notext">Categorias</a>
         <h1 class="jqm-logo">
-        	SMS deck
+        	SMSdeck
         </h1>
-		<a href="#painel_categorias" class="jqm-navmenu-link" data-icon="bars" data-iconpos="notext">Opções</a>
-		<a href="#" class="jqm-search-link" data-icon="search" data-iconpos="notext">Search</a>
-		
-
+		<a href="#painel_opcoes" class="jqm-search-link" data-icon="grid" data-iconpos="notext">Opções</a>
 	</div><!-- /header -->
 
 	<div data-role="content" class="jqm-content">
@@ -62,6 +60,13 @@
 	</div><!-- /panel -->
     
     
+    <div data-role="panel" id="painel_opcoes" class="jqm-nav-panel jqm-navmenu-panel painel_filtro" data-position="right" data-display="overlay" data-theme="c">
+        <ul data-role="listview" data-theme="d" data-divider-theme="d" data-icon="false" data-global-nav="demos" class="jqm-list opcoes_lista">
+			<!-- links das categorias são carregados automaticamente -->
+        </ul>
+	</div><!-- /panel -->
+    
+    
 
 	
 <div data-role="popup" id="popup_compartilhar" data-theme="none" data-transition="flip" style="margin:0; width:250px;">
@@ -70,6 +75,12 @@
 		<!-- conteudo adicionado dinamicamente -->
 	</ul>
   </div>
+  <!--
+  <div data-role="footer" class="ui-bar">
+    <a href="#" data-icon="arrow-u">Cancelar</a>
+    <a href="#" data-icon="arrow-d">Configurar</a>
+  </div>
+  -->
 </div>
 
 	
